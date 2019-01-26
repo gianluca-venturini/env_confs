@@ -45,10 +45,6 @@
     "command": "workbench.action.terminal.focus"
   },
   {
-    "key": "cmd+left",
-    "command": "workbench.action.focusLeftGroup"
-  },
-  {
     "key": "cmd+k cmd+left",
     "command": "-workbench.action.focusLeftGroup"
   },
@@ -77,15 +73,19 @@
     "command": "-workbench.action.focusBelowGroup"
   },
   {
-    "key": "cmd+right",
-    "command": "workbench.action.focusRightGroup"
-  },
-  {
     "key": "cmd+k cmd+right",
     "command": "-workbench.action.focusRightGroup"
   },
   {
     "key": "cmd+up",
     "command": "workbench.action.focusActiveEditorGroup"
+  },
+  {
+    "key": "shift+alt+cmd+]",
+    "command": "workbench.action.focusRightGroup"
+  },
+  {
+    "key": "shift+alt+cmd+[",
+    "command": "workbench.action.focusLeftGroup"
   }
 ]
