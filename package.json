@@ -1,0 +1,14 @@
+{
+  "name": "env_confs",
+  "version": "1.0.0",
+  "description": "My personal VSCode configuration",
+  "main": "index.js",
+  "scripts": {
+    "update-vscode": "cp /Users/$USER/Library/Application\\ Support/Code/User/keybindings.json ./vs_code/",
+    "update": "npm run update-vscode",
+    "restore-vscode": "cp ./vs_code/keybindings.json /Users/$USER/Library/Application\\ Support/Code/User/",
+    "restore": "npm run restore-vscode"
+  },
+  "author": "Gianluca Venturini <gianluca.91@gmail.com>",
+  "license": "MIT"
+}
