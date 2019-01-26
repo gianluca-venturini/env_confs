@@ -4,9 +4,13 @@
   "description": "My personal VSCode configuration",
   "main": "index.js",
   "scripts": {
-    "update-vscode": "cp /Users/$USER/Library/Application\\ Support/Code/User/keybindings.json ./vs_code/",
+    "update-vscode": "npm run update-vscode-settings && npm run update-vscode-keybindings",
+    "update-vscode-settings": "cp /Users/$USER/Library/Application\\ Support/Code/User/settings.json ./vs_code/",
+    "update-vscode-keybindings": "cp /Users/$USER/Library/Application\\ Support/Code/User/keybindings.json ./vs_code/",
     "update": "npm run update-vscode",
-    "restore-vscode": "cp ./vs_code/keybindings.json /Users/$USER/Library/Application\\ Support/Code/User/",
+    "restore-vscode": "npm run restore-vscode-settings && npm run restore-vscode-keybindings",
+    "restore-vscode-keybindings": "cp ./vs_code/keybindings.json /Users/$USER/Library/Application\\ Support/Code/User/",
+    "restore-vscode-settings": "cp ./vs_code/keybindings.json /Users/$USER/Library/Application\\ Support/Code/User/",
     "restore": "npm run restore-vscode"
   },
   "author": "Gianluca Venturini <gianluca.91@gmail.com>",
