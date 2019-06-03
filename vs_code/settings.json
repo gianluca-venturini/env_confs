@@ -1,0 +1,9 @@
+{
+  "files.autoSave": "onFocusChange",
+  "editor.tabSize": 2,
+  "window.zoomLevel": 0,
+  "editor.rulers": [80, 100],
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "files.trimTrailingWhitespace": true,
+  "editor.formatOnSave": true
+}

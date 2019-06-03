@@ -11,7 +11,9 @@
     "restore-vscode": "npm run restore-vscode-settings && npm run restore-vscode-keybindings",
     "restore-vscode-keybindings": "cp -f ./vs_code/keybindings.json /Users/$USER/Library/Application\\ Support/Code/User/",
     "restore-vscode-settings": "cp -f ./vs_code/keybindings.json /Users/$USER/Library/Application\\ Support/Code/User/",
-    "restore": "npm run restore-vscode"
+    "restore": "npm run restore-vscode",
+    "update-iterm2": "cp $HOME/Library/Preferences/com.googlecode.iterm2.plist ./iterm2/",
+    "restore-iterm2": "cp ./iterm2/com.googlecode.iterm2.plist HOME/Library/"
   },
   "author": "Gianluca Venturini <gianluca.91@gmail.com>",
   "license": "MIT"
