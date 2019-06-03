@@ -7,13 +7,13 @@
     "update-vscode": "npm run update-vscode-settings && npm run update-vscode-keybindings",
     "update-vscode-settings": "cp -f /Users/$USER/Library/Application\\ Support/Code/User/settings.json ./vs_code/",
     "update-vscode-keybindings": "cp -f /Users/$USER/Library/Application\\ Support/Code/User/keybindings.json ./vs_code/",
-    "update": "npm run update-vscode",
+    "update": "npm run update-vscode && npm run update-iterm2",
     "restore-vscode": "npm run restore-vscode-settings && npm run restore-vscode-keybindings",
     "restore-vscode-keybindings": "cp -f ./vs_code/keybindings.json /Users/$USER/Library/Application\\ Support/Code/User/",
     "restore-vscode-settings": "cp -f ./vs_code/keybindings.json /Users/$USER/Library/Application\\ Support/Code/User/",
-    "restore": "npm run restore-vscode",
+    "restore": "npm run restore-vscode && npm run restore-iterm2",
     "update-iterm2": "cp $HOME/Library/Preferences/com.googlecode.iterm2.plist ./iterm2/",
-    "restore-iterm2": "cp ./iterm2/com.googlecode.iterm2.plist HOME/Library/"
+    "restore-iterm2": "cp ./iterm2/com.googlecode.iterm2.plist $HOME/Library/Preferences"
   },
   "author": "Gianluca Venturini <gianluca.91@gmail.com>",
   "license": "MIT"
