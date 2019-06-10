@@ -1,9 +1,12 @@
 {
-  "files.autoSave": "onFocusChange",
-  "editor.tabSize": 2,
-  "window.zoomLevel": 0,
-  "editor.rulers": [80, 100],
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "files.trimTrailingWhitespace": true,
-  "editor.formatOnSave": true
+    "prettier.singleQuote": true,
+    "prettier.printWidth": 124,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.tslint": true
+    },
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnSave": true,
+    "files.trimTrailingWhitespace": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "window.zoomLevel": 0
 }
