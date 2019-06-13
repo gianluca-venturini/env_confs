@@ -2,11 +2,8 @@
     "prettier.singleQuote": true,
     "prettier.printWidth": 124,
     "editor.codeActionsOnSave": {
-        "source.fixAll.tslint": true
+        "source.fixAll.tslint": true,
+        "source.organizeImports": true
     },
-    "files.autoSave": "onFocusChange",
-    "editor.formatOnSave": true,
-    "files.trimTrailingWhitespace": true,
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "window.zoomLevel": 0
+    "files.autoSave": "onFocusChange"
 }
