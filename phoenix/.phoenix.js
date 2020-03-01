@@ -1,9 +1,13 @@
 Key.on('f', ['alt', 'cmd'], () => {
-  toggleMaxScreen(Window.focused());
+  toggleMaxScreen(Window.focused(), getFocusedScreen);
+});
+
+Key.on('g', ['alt', 'cmd'], () => {
+  toggleMaxScreen(Window.focused(), getOtherScreen);
 });
 
 Key.on('left', ['alt', 'cmd'], () => {
-  togglePercentageScreen(Window.focused(), screen => ({
+  togglePercentageScreen(Window.focused(), getFocusedScreen, screen => ({
     x: screen.x,
     y: screen.y,
     height: screen.height,
@@ -12,7 +16,7 @@ Key.on('left', ['alt', 'cmd'], () => {
 });
 
 Key.on('right', ['alt', 'cmd'], () => {
-  togglePercentageScreen(Window.focused(), screen => ({
+  togglePercentageScreen(Window.focused(), getFocusedScreen, screen => ({
     x: screen.x + screen.width / 2,
     y: screen.y,
     height: screen.height,
@@ -21,7 +25,7 @@ Key.on('right', ['alt', 'cmd'], () => {
 });
 
 Key.on('up', ['alt', 'cmd'], () => {
-  togglePercentageScreen(Window.focused(), screen => ({
+  togglePercentageScreen(Window.focused(), getFocusedScreen, screen => ({
     x: screen.x,
     y: screen.y,
     height: screen.height / 2,
@@ -30,7 +34,7 @@ Key.on('up', ['alt', 'cmd'], () => {
 });
 
 Key.on('down', ['alt', 'cmd'], () => {
-  togglePercentageScreen(Window.focused(), screen => ({
+  togglePercentageScreen(Window.focused(), getFocusedScreen, screen => ({
     x: screen.x,
     y: screen.y + screen.height / 2,
     height: screen.height / 2,
@@ -38,15 +42,39 @@ Key.on('down', ['alt', 'cmd'], () => {
   }));
 });
 
-function toggleMaxScreen(window) {
-  togglePercentageScreen(window, screen => screen);
+/** Get the screen with the focus. */
+function getFocusedScreen() {
+  return Window.focused().screen();
 }
 
-function togglePercentageScreen(window, setScreenCoordinates) {
+
+/** Get the first screen without the focus. */
+function getOtherScreen() {
+  const allScreens = Screen.all();
+  const focusedScreen = getFocusedScreen();
+  if (allScreens.length < 2) {
+    Phoenix.notify('Can\'t get other screens. Is only one monitor connected?');
+    return focusedScreen;
+  }
+  const otherScreens = allScreens.filter(screen => screen.identifier() !== focusedScreen.identifier());
+  if (otherScreens.length === 0) {
+    Phoenix.notify('Can\'t get other screens. Why do two monitors have the same id?');
+    return focusedScreen;
+  }
+  return otherScreens[0];
+}
+
+/** Expand the window to full screen. */
+function toggleMaxScreen(window, getScreen) {
+  togglePercentageScreen(window, getScreen, screen => screen);
+}
+
+/** Expand the window to a percentage of the screen. */
+function togglePercentageScreen(window, getScreen, getScreenCoordinates) {
   if (!window) return; 
 
-  const screen = window.screen().flippedVisibleFrame();
-  const screenCoordinates = setScreenCoordinates(screen);
+  const screen = getScreen().flippedVisibleFrame();
+  const screenCoordinates = getScreenCoordinates(screen);
   
   window.setTopLeft({
     x: screenCoordinates.x, 
