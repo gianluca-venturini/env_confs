@@ -42,6 +42,54 @@ Key.on('down', ['alt', 'cmd'], () => {
   }));
 });
 
+Key.on('right', ['ctrl', 'alt', 'cmd'], () => {
+  moveFocusOnVisibleWindow((windowFrame, maxMargin) => ({
+    x: windowFrame.x + windowFrame.width + maxMargin,
+    y: windowFrame.y + windowFrame.height / 2,
+  }));
+});
+
+Key.on('left', ['ctrl', 'alt', 'cmd'], () => {
+  moveFocusOnVisibleWindow((windowFrame, maxMargin) => ({
+    x: windowFrame.x - maxMargin,
+    y: windowFrame.y + windowFrame.height / 2,
+  }));
+});
+
+Key.on('up', ['ctrl', 'alt', 'cmd'], () => {
+  moveFocusOnVisibleWindow((windowFrame, maxMargin) => ({
+    x: windowFrame.x + windowFrame.width / 2,
+    y: windowFrame.y - maxMargin,
+  }));
+});
+
+Key.on('down', ['ctrl', 'alt', 'cmd'], () => {
+  moveFocusOnVisibleWindow((windowFrame, maxMargin) => ({
+    x: windowFrame.x + windowFrame.width / 2,
+    y: windowFrame.y + windowFrame.height + maxMargin,
+  }));
+});
+
+function moveFocusOnVisibleWindow(getSamplePoint) {
+  const focusedWindow = Window.focused();
+  const maxMargin = 10;
+  const samplePoint = getSamplePoint(focusedWindow.frame(), maxMargin);
+  const window = Window.at(samplePoint);
+  if (!window) {
+    Phoenix.log('No window found at point', point.x, point.y);
+  }
+  if (!window.isVisible()) {
+    Phoenix.log('Window disqualified for not being visible', window.title());
+    return;
+  }
+  if (window.screen().identifier() !== focusedWindow.screen().identifier()) {
+    Phoenix.log('Window disqualified for not being on the same screen', window.title(), window.screen().identifier(), focusedWindow.screen().identifier());
+    return;
+  }
+  Phoenix.log('Focus on window', window.title());
+  window.focus();
+}
+
 /** Get the screen with the focus. */
 function getFocusedScreen() {
   return Window.focused().screen();
