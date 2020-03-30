@@ -1,3 +1,7 @@
+Phoenix.set ({
+  openAtLogin: true
+});
+
 Key.on('f', ['alt', 'cmd'], () => {
   toggleMaxScreen(Window.focused(), getFocusedScreen);
 });
