@@ -1,9 +1,12 @@
 {
-    "prettier.singleQuote": true,
-    "prettier.printWidth": 124,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.tslint": true,
-        "source.organizeImports": true
-    },
-    "files.autoSave": "onFocusChange"
+    "cSpell.userWords": [
+        "gianluca",
+        "Hubspot",
+        "Jobby",
+        "keymaker",
+        "phonehome",
+        "Prismic",
+        "Trisolaris"
+    ],
+    "redhat.telemetry.enabled": false
 }
